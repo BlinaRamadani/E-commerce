@@ -1,27 +1,26 @@
 <?php
 include '../connection.php';
 
-// Counts for cards
-$product_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM products"));
-$user_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users"));
-$order_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `order`"));
-$message_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM message"));
+$maintenance_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM maintenance"));
+$sanitation_count  = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM maintenance WHERE photo IS NOT NULL AND photo != ''"))['total'];
+$user_count        = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users"));
+$message_count     = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM message"));
 ?>
 
 <h3 class="mb-4">Dashboard Overview</h3>
 <div class="row g-4">
     <div class="col-md-3">
         <div class="card-dashboard bg-dark">
-            <i class="fas fa-box"></i>
-            <h3><?= $product_count ?></h3>
-            <p>Products</p>
+            <i class="fas fa-tools"></i>
+            <h3><?= $maintenance_count ?></h3>
+            <p>Maintenance Issues</p>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card-dashboard bg-blue">
-            <i class="fas fa-shopping-cart"></i>
-            <h3><?= $order_count ?></h3>
-            <p>Orders</p>
+            <i class="fa-solid fa-photo-film"></i>
+            <h3><?= $sanitation_count ?></h3>
+            <p>Reports with Photos</p>
         </div>
     </div>
     <div class="col-md-3">

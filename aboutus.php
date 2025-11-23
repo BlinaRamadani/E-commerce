@@ -59,49 +59,66 @@ nav {
   color: #A1C2BD;
 }
 
-:root{
-  --accent:#A1C2BD;
-  --dark:#19183B;
-  --light:#fff;
-}
+ :root {
+    --primary-bg: #3C467B;   /* deep indigo */
+    --secondary-bg: #50589C; /* card background */
+    --accent: #636CCB;       /* borders/accents */
+    --highlight: #6E8CFB;    /* CTA/highlight */
+    --text: #F5F7FF;         /* main text */
+    --muted: #CBD2FF;        /* muted text */
+  }
 
-.logo-elegant{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  user-select:none;
-}
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 
-/* circular initial */
-.logo-elegant .mark{
-  width:58px;
-  height:58px;
-  display:inline-grid;
-  place-items:center;
-  background:linear-gradient(135deg,var(--accent),#ffffff);
-  color:var(--dark);
-  font-family:'Montserrat',sans-serif;
-  font-weight:700;
-  font-size:28px;
-  border-radius:50%;
-  box-shadow:0 6px 18px rgba(25,24,59,0.12);
-}
+  /* City skyline icon using CSS shapes */
+  .city {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+  }
 
-/* word */
-.logo-elegant .word{
-  font-family:'Dancing Script',cursive;
-  color:var(--dark);
-  font-size:36px;
-  line-height:1;
-  letter-spacing:0.5px;
-  text-shadow:0 1px 0 rgba(255,255,255,0.2);
-}
+  .building {
+    width: 10px;
+    height: 30px;
+    background-color: var(--highlight);
+    border-radius: 2px 2px 0 0;
+    position: relative;
+  }
 
-/* responsive */
-@media (max-width:480px){
-  .logo-elegant .mark{ width:46px; height:46px; font-size:22px;}
-  .logo-elegant .word{ font-size:26px;}
-}
+  .building:nth-child(2) {
+    height: 45px;
+  }
+
+  .building:nth-child(3) {
+    height: 35px;
+  }
+
+  .building::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 2px;
+    background-color: var(--text);
+    border-radius: 50%;
+  }
+
+  /* Text */
+  .logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text);
+  }
+
+  .logo-text span {
+    color: var(--highlight);
+  }
 
 .search-bar {
   display: flex;
@@ -180,7 +197,7 @@ nav {
 
 #hero-jewellery {
   position: relative;
-  background-image: url('img/aw.jpg');
+  background-image: url('img/home.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -328,7 +345,7 @@ nav {
     .service-item:nth-child(5) { animation-delay: 0.5s; }
     .service-item:nth-child(6) { animation-delay: 0.6s; }
 
-    /* Responsive Adjustments */
+    
     @media (max-width: 768px) {
       .services-title {
         font-size: 32px;
@@ -345,7 +362,7 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background-image: url('img/2.avif');
+  background-image: url('img/2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -476,35 +493,29 @@ footer {
 <body>
 
   <header>
-          <div class="logo-elegant" aria-label="Seraphina logo">
-  <span class="mark">S</span>
-  <span class="word">Seraphina</span>
+<div class="logo">
+  <div class="city">
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+  </div>
+  <div class="logo-text">Urban <span>Service</span></div>
 </div>
     <nav>
       <ul class="nav-links">
         <li><a href="index.php">Home</a></li>
         <li><a href="aboutus.php">About Us</a></li>
-        <li><a href="index.php#jewellery">Buy</a></li>
+        <li><a href="report.php">Report</a></li>
         <li><a href="contantus.php">Contact Us</a></li>
       </ul>
-            <div class="search-bar">
-                <input type="text" placeholder="Search jewellery...">
-                <button>Search</button><br>
-                <a href="cart.php" class="icon-btn">
-            <i class="fa-regular fa-heart"></i>
-            </a>
-            <a href="cart.php" class="icon-btn">
-            <i class="fa-solid fa-cart-shopping"></i>
-      </a>
-            </div>
     </nav>
   </header>
 
   <section id="hero-jewellery">
     <div class="content">
-      <h2>Embrace Timeless Elegance</h2>
-      <p>At Seraphina, we believe jewellery is more than an accessory — it’s a reflection of grace, passion, and individuality.</p><br>
-      <a href="contantus.php" class="btn">Contact Us</a>
+      <h2>Building a Better City Together</h2>
+      <p>Passionate people, smart solutions, and care for every corner of your city.</p><br>
+      <a href="report.php" class="btn">Report</a>
     </div>
   </section>
 
@@ -513,39 +524,39 @@ footer {
 
     <div class="services-container">
       <div class="service-item">
-        <i class="fas fa-star"></i>
-        <h3>Quality Products</h3>
-        <p>Every piece is crafted with precision and care, ensuring top-tier quality and elegance.</p>
+        <i class="fa-solid fa-city"></i>
+        <h3>Clean & Green Cities</h3>
+        <p>From waste management to green spaces, we ensure every corner of your city stays fresh and vibrant.</p>
       </div>
 
       <div class="service-item">
-        <i class="fas fa-shopping-cart"></i>
-        <h3>Online Sales</h3>
-        <p>Shop easily and securely through our online platform, available 24/7 for your convenience.</p>
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <h3>Rapid Response Teams</h3>
+        <p>Our crews are on standby 24/7 to fix potholes, broken lights, and other urban issues — fast and efficiently.</p>
       </div>
 
       <div class="service-item">
-        <i class="fas fa-truck"></i>
-        <h3>Fast Delivery</h3>
-        <p>Enjoy quick and reliable delivery, right to your doorstep — wherever you are.</p>
+        <i class="fa-solid fa-computer"></i>
+        <h3>Smart Reporting Tools</h3>
+        <p>Citizens can report problems directly through our app or website. Transparency and action, just a tap away.</p>
       </div>
 
       <div class="service-item">
-        <i class="fas fa-percent"></i>
-        <h3>Discounts & Offers</h3>
-        <p>Benefit from our seasonal sales, loyalty rewards, and exclusive member discounts.</p>
+        <i class="fa-solid fa-recycle"></i>
+        <h3>Sustainable Practices</h3>
+        <p>We prioritize eco-friendly solutions in every service recycling, energy-saving, and low-emission operations.</p>
       </div>
 
       <div class="service-item">
-        <i class="fas fa-retweet"></i>
-        <h3>Easy Returns</h3>
-        <p>Changed your mind? Our return process is simple, transparent, and stress-free.</p>
+        <i class="fa-solid fa-briefcase"></i>
+        <h3>Community Engagement</h3>
+        <p>Workshops, surveys, and local events keep residents involved in shaping a better urban environment.</p>
       </div>
 
       <div class="service-item">
         <i class="fas fa-headset"></i>
-        <h3>Customer Support</h3>
-        <p>We’re always here to help — our support team is ready to assist you with care and attention.</p>
+        <h3>Always On Support</h3>
+        <p>Our support center is ready to assist with any city care concerns,because your voice matters.</p>
       </div>
     </div>
   </section>
@@ -555,28 +566,28 @@ footer {
     <div class="card-wrapper">
       <div class="card">
         <img src="img/emma.jpg" alt="Emma's Image" class="card-image">
-        <div class="title">Emma Doe <br><br> CIO</div>
+        <div class="title">Isabella Martin <br><br> CIO</div>
         <div class="card-content">
-          <p>Email: emma.doe@gmail.com</p>
-          <p>Emma, as CIO of our jewellery website, leads tech development, ensuring a fast, secure, and user-friendly platform for an excellent reader experience.</p>
+          <h4>Email: isabella.martin@gmail.com</h4>
+          <p>Isabella,as Operations Manager at Urban Servis, ensures every city project runs on time, from street cleaning to park maintenance, creating a safer.</p>
         </div>
       </div>
 
       <div class="card">
         <img src="img/nora.jpg" alt="Nora's Image" class="card-image">
-        <div class="title">Nora Baffyn<br><br> Content Manager</div>
+        <div class="title">Mia Brown<br><br> Content Manager</div>
         <div class="card-content">
-          <p>Email: nora.baffyn@gmail.com</p>
-          <p>Nora is responsible for updating and maintaining the website's content, such as adding new jewellery, writing jewellery descriptions, and managing the blog.</p>
+          <h4>Email: mia.brown@gmail.com</h4>
+          <p>Mia,as Community Engagement Lead, listens to residents’ needs and ideas, turning feedback into initiatives that improve daily life and strengthen the community.</p>
         </div>
       </div>
 
       <div class="card">
         <img src="img/henry.jpg" alt="Henry's Image" class="card-image">
-        <div class="title">Henry Larlee<br><br>Marketing Specialist</div>
+        <div class="title">Ethan Johnson<br><br>Marketing Specialist</div>
         <div class="card-content">
-          <p>Email: henry.larlee@gmail.com</p>
-          <p>Henry develops strategies for promoting the website, such as social media ads, email campaigns, and collaborations with authors or publishers.</p>
+          <h4>Email: ethan.johnson@gmail.com</h4>
+          <p>Ethan,as Head of Infrastructure, manages city systems and services, making sure roads, lighting, and public spaces are well-maintained and functional for everyone.</p>
         </div>
       </div>
     </div>
@@ -589,13 +600,13 @@ footer {
         <ul>
           <li><a href="index.php">Home</a></li>
           <li><a href="aboutus.php">About Us</a></li>
-          <li><a href="#">Books</a></li>
-          <li><a href="#">Contact Us</a></li>
+          <li><a href="report.php">Report</a></li>
+          <li><a href="contantus.php">Contact Us</a></li>
         </ul>
       </div>
       <div class="footer-section links">
-        <h3>About Seraphina</h3>
-        <p>Seraphina, inspired by celestial seraphim, embodies purity, light, and timeless elegance.</p>
+        <h3>About Urban Service</h3>
+        <p>Urban Service,embodies innovation, connection, and vibrant community energy.</p>
       </div>
       <div class="footer-section social">
         <h3>Follow Us</h3>
@@ -611,7 +622,7 @@ footer {
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 Seraphina Jewellery | All rights reserved</p>
+      <p>&copy; 2025 Urban Serve | All rights reserved</p>
     </div>
   </footer>
 </body>

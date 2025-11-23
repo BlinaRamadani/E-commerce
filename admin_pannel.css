@@ -18,7 +18,7 @@
 }
 
 .card i {
-    color: #007bff; /* Adjust per card if needed */
+    color: #007bff; 
 }
 
 
@@ -28,28 +28,28 @@
     min-height: 100vh;
     color: white;
     position: fixed;
-    overflow-y: auto;           /* Enables vertical scrolling */
-    scroll-behavior: smooth;    /* Smooth scroll */
-    scrollbar-width: thin;      /* Firefox */
+    overflow-y: auto;           
+    scroll-behavior: smooth;    
+    scrollbar-width: thin;     
 }
 
-/* WebKit browsers (Chrome, Edge, Safari) */
+
 .sidebar::-webkit-scrollbar {
-    width: 8px;                  /* Width of scrollbar */
+    width: 8px;                  
 }
 
 .sidebar::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1); /* Track color */
+    background: rgba(0, 0, 0, 0.1); 
     border-radius: 10px;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3); /* Scrollbar color */
+    background-color: rgba(255, 255, 255, 0.3); 
     border-radius: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.1);       /* Optional border for style */
+    border: 2px solid rgba(0, 0, 0, 0.1);       
 }
 
-/* Optional: Hover effect for scrollbar */
+
 .sidebar::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.5);
 }

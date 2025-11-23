@@ -5,7 +5,7 @@ $orders = mysqli_query($conn, "SELECT * FROM `order` ORDER BY id DESC");
 
 <h3 class="mb-4">Manage Orders</h3>
 
-<!-- ADD ORDER BUTTON -->
+
 <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addOrderModal">
     <i class="fas fa-plus"></i> Add New Order
 </button>
@@ -67,7 +67,7 @@ $orders = mysqli_query($conn, "SELECT * FROM `order` ORDER BY id DESC");
     </table>
 </div>
 
-<!-- ADD ORDER MODAL -->
+
 <div class="modal fade" id="addOrderModal" tabindex="-1" aria-labelledby="addOrderModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -130,7 +130,7 @@ $orders = mysqli_query($conn, "SELECT * FROM `order` ORDER BY id DESC");
   </div>
 </div>
 
-<!-- EDIT ORDER MODAL -->
+
 <div class="modal fade" id="editOrderModal" tabindex="-1" aria-labelledby="editOrderModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -157,7 +157,7 @@ $orders = mysqli_query($conn, "SELECT * FROM `order` ORDER BY id DESC");
 </div>
 
 <script>
-// Prefill edit modal
+
 document.querySelectorAll('.editOrderBtn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.getElementById('editOrderId').value = btn.dataset.id;
@@ -165,7 +165,7 @@ document.querySelectorAll('.editOrderBtn').forEach(btn => {
     });
 });
 
-// Update order payment status
+
 document.getElementById('editOrderForm').addEventListener('submit', async e => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -176,7 +176,7 @@ document.getElementById('editOrderForm').addEventListener('submit', async e => {
     location.reload();
 });
 
-// Delete order
+
 document.querySelectorAll('.deleteOrderBtn').forEach(btn => {
     btn.addEventListener('click', async () => {
         if (confirm('Are you sure you want to delete this order?')) {
@@ -192,7 +192,7 @@ document.querySelectorAll('.deleteOrderBtn').forEach(btn => {
     });
 });
 
-// Add order
+
 document.getElementById('addOrderForm').addEventListener('submit', async e => {
     e.preventDefault();
     const formData = new FormData(e.target);

@@ -14,10 +14,9 @@ if (isset($_POST['logout'])) {
     exit();
 }
 
-// Dashboard summary counts
-$product_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM products"));
+$maintenance_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM products"));
+$sanitation_count  = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as total FROM maintenance WHERE photo IS NOT NULL AND photo != ''"))['total'];
 $user_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM users"));
-$order_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `order`"));
 $message_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM message"));
 ?>
 <!DOCTYPE html>
@@ -25,7 +24,7 @@ $message_count = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM message"));
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel</title>
+<title>City Care Admin Panel</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
@@ -75,8 +74,6 @@ body {
 .bg-green { background-color: #22c55e; }
 .bg-pink { background-color: #ec4899; }
 .bg-dark { background-color: #1f2937; }
-
-
 </style>
 </head>
 <body>
@@ -84,12 +81,12 @@ body {
 <div class="sidebar">
     <div>
         <div class="text-center my-4">
-            <h4>Admin Dashboard</h4>
+            <h4>Urban Services Dashboard</h4>
             <small class="text-secondary">Welcome, <?= htmlspecialchars($admin_id) ?></small>
         </div>
         <a href="#" class="active" data-page="dashboard"><i class="fas fa-th-large me-2"></i> Dashboard</a>
-        <a href="#" data-page="products"><i class="fas fa-box me-2"></i> Products</a>
-        <a href="#" data-page="orders"><i class="fas fa-shopping-cart me-2"></i> Orders</a>
+        <a href="#" data-page="maintenance"><i class="fas fa-tools me-2"></i> Maintenance Issues</a>
+        <a href="#" data-page="maintenance"><i class="fas fa-images me-2"></i> Reports with Photos</a>
         <a href="#" data-page="users"><i class="fas fa-users me-2"></i> Users</a>
         <a href="#" data-page="messages"><i class="fas fa-envelope me-2"></i> Messages</a>
     </div>
@@ -101,22 +98,21 @@ body {
 </div>
 
 <div class="main-content" id="content-area">
-    <!-- Default Dashboard -->
     <h3 class="mb-4">Dashboard</h3>
     <div class="row g-4">
         <div class="col-md-3">
             <div class="card-dashboard bg-dark">
-                <i class="fas fa-box"></i>
-                <h3><?= $product_count ?></h3>
-                <p>Products</p>
+                <i class="fas fa-tools"></i>
+                <h3><?= $maintenance_count ?></h3>
+                <p>Maintenance Issues</p>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card-dashboard bg-blue">
-                <i class="fas fa-shopping-cart"></i>
-                <h3><?= $order_count ?></h3>
-                <p>Orders</p>
-            </div>
+        <div class="card-dashboard bg-blue">
+            <i class="fas fa-images"></i>
+            <h3><?= $sanitation_count ?></h3>
+            <p>Reports with Photos</p>
+        </div>
         </div>
         <div class="col-md-3">
             <div class="card-dashboard bg-green">
@@ -137,7 +133,6 @@ body {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Sidebar navigation with AJAX content loading
 document.querySelectorAll('.sidebar a[data-page]').forEach(link => {
     link.addEventListener('click', async e => {
         e.preventDefault();
@@ -158,7 +153,6 @@ document.querySelectorAll('.sidebar a[data-page]').forEach(link => {
     });
 });
 
-// Load dashboard by default on page load
 window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.sidebar a[data-page="dashboard"]').click();
 });

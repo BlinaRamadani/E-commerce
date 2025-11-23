@@ -1,9 +1,13 @@
+<?php
+include 'connection.php'; // This line must be at the top!
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seraphina Jewellery</title>
+    <title></title>
     <link rel="stylesheet" href="Css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -64,49 +68,66 @@ nav {
   color: #A1C2BD;
 }
 
-:root{
-  --accent:#A1C2BD;
-  --dark:#19183B;
-  --light:#fff;
-}
+ :root {
+    --primary-bg: #3C467B;   /* deep indigo */
+    --secondary-bg: #50589C; /* card background */
+    --accent: #636CCB;       /* borders/accents */
+    --highlight: #6E8CFB;    /* CTA/highlight */
+    --text: #F5F7FF;         /* main text */
+    --muted: #CBD2FF;        /* muted text */
+  }
 
-.logo-elegant{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  user-select:none;
-}
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 
-/* circular initial */
-.logo-elegant .mark{
-  width:58px;
-  height:58px;
-  display:inline-grid;
-  place-items:center;
-  background:linear-gradient(135deg,var(--accent),#ffffff);
-  color:var(--dark);
-  font-family:'Montserrat',sans-serif;
-  font-weight:700;
-  font-size:28px;
-  border-radius:50%;
-  box-shadow:0 6px 18px rgba(25,24,59,0.12);
-}
+  /* City skyline icon using CSS shapes */
+  .city {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+  }
 
-/* word */
-.logo-elegant .word{
-  font-family:'Dancing Script',cursive;
-  color:var(--dark);
-  font-size:36px;
-  line-height:1;
-  letter-spacing:0.5px;
-  text-shadow:0 1px 0 rgba(255,255,255,0.2);
-}
+  .building {
+    width: 10px;
+    height: 30px;
+    background-color: var(--highlight);
+    border-radius: 2px 2px 0 0;
+    position: relative;
+  }
 
-/* responsive */
-@media (max-width:480px){
-  .logo-elegant .mark{ width:46px; height:46px; font-size:22px;}
-  .logo-elegant .word{ font-size:26px;}
-}
+  .building:nth-child(2) {
+    height: 45px;
+  }
+
+  .building:nth-child(3) {
+    height: 35px;
+  }
+
+  .building::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 2px;
+    background-color: var(--text);
+    border-radius: 50%;
+  }
+
+  /* Text */
+  .logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text);
+  }
+
+  .logo-text span {
+    color: var(--highlight);
+  }
 
 .search-bar {
   display: flex;
@@ -162,7 +183,7 @@ nav {
 
 #hero-jewellery {
   position: relative;
-  background-image: url('img/jhome.jpg');
+  background-image: url('img/kk.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -215,69 +236,47 @@ nav {
 }
 
 
-#jewellery {
-  background-color:  #E7F2EF;
-  padding: 32px;
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: #15182b;
+  padding: 30px;
+  border-radius: 16px;
   text-align: center;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-#jewellery h2 {
-  font-size: 32px;
-  margin-bottom: 24px;
+.stat-card h1 {
+  margin: 0;
+  font-size: 50px;
+  color: #7c6cf2;
 }
 
-.jewellery-container {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
+.stat-card p {
+  margin-top: 10px;
+  font-size: 16px;
+  opacity: 0.8;
 }
 
-.jewellery-box  {
-  background-color:  #ffffff;
-  padding: 16px;
-  border-radius: 8px;
-  border: 1px solid #708993;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 180px;
-  transition: transform 0.3s;
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 8px;
 }
 
-.jewellery-box img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.jewellery-box h3 {
-  font-size: 18px;
-  margin-top: 16px;
-}
-
-.jewellery-box p {
-  font-size: 14px;
-  margin: 8px 0;
-}
-
-.jewellery-box:hover {
-  transform: scale(1.05);
-}
-
-
-.read-more {
-  background-color: #708993;
-  color: #ffffff;
-  padding: 8px 20px;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.read-more:hover {
-  background-color: #A1C2BD;
+button {
+    background: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 
@@ -347,7 +346,7 @@ nav {
   background-color: #E7F2EF;
   padding: 20px;
   border-radius: 10px;
-  max-width: 250px;
+  max-width: 290px;
   font-style: italic;
   color: #19183B;
 }
@@ -429,9 +428,127 @@ footer {
 }
 
 .review-text {
-    font-family: 'Dancing Script', cursive;
+    font-family: italic;
     font-size: 25px; 
     color: #19183B;     
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.stat-card {
+  background: #15182b;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.stat-card h1 {
+  margin: 0;
+  font-size: 50px;
+  color: #7c6cf2;
+}
+
+.stat-card p {
+  margin-top: 10px;
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+h1.title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 34px;
+  font-weight: bold;
+  color: #7c6cf2;
+  text-shadow: 0 0 10px rgba(109, 98, 196, 0.5);
+}
+
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 8px;
+}
+
+button {
+    background: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    body {
+        margin: 0;
+        background: #3C467B;
+        font-family:'Lato', sans-serif;
+        color: white;
+    }
+
+    .stats-grid {
+        max-width: 900px;
+        margin: 40px auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .stat-card {
+        background: #15182b;
+        padding: 40px 20px;
+        border-radius: 16px;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat-card h1 {
+        margin: 0;
+        font-size: 54px;
+        font-weight: bold;
+        color: #7c6cf2; /* purple like your photo */
+    }
+
+    .stat-card p {
+        margin-top: 10px;
+        font-size: 18px;
+        opacity: 0.8;
+    }
+
+.stat-card {
+    background: #15182b;
+    padding: 40px 20px;
+    border-radius: 16px;
+    text-align: center;
+    color: #fff; /* Teksti i bardhë */
+    text-decoration: none; /* heq vijat nën link */
+    border: none; /* heq border të dukshëm */
+    transition: transform 0.2s, background 0.3s;
+}
+
+.stat-card h1 {
+    margin: 0;
+    font-size: 54px;
+    font-weight: bold;
+    color: #7c6cf2; /* purple */
+}
+
+.stat-card p {
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0.9;
+    color: #ffffff; /* Teksti i bardhë */
+}
+
+.stat-card:hover {
+    transform: scale(1.05);
+    background: #1f1f3a; /* pak ndryshim ngjyre kur hover */
 }
 
 
@@ -442,140 +559,93 @@ html {
 <body>
     <header>
 
-<div class="logo-elegant" aria-label="Seraphina logo">
-  <span class="mark">S</span>
-  <span class="word">Seraphina</span>
+<div class="logo">
+  <div class="city">
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+  </div>
+  <div class="logo-text">Urban <span>Service</span></div>
 </div>
+
         <nav>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="aboutus.php">About Us</a></li>
-                <li><a href="#jewellery">Buy</a></li>
+                <li><a href="report.php">Report</a></li>
                 <li><a href="contantus.php">Contact Us</a></li>
             </ul>
-            <div class="search-bar">
-                <input type="text" placeholder="Search jewellery...">
-                <button>Search</button><br>
-                <a href="cart.php" class="icon-btn">
-            <i class="fa-regular fa-heart"></i>
-            </a>
-            <a href="cart.php" class="icon-btn">
-            <i class="fa-solid fa-cart-shopping"></i>
-      </a>
-            </div>
         </nav>
     </header>
 
     <section id="hero-jewellery">
         <div class="content">
-            <h2>Discover Your Next Treasure</h2>
-            <p>Step into the world of Seraphina, where every piece of jewellery shines with elegance and heavenly beauty.</p><br>
-            <a href="#jewellery" class="btn">Buy Now</a>
+            <h2>Your City, Our Care</h2>
+            <p>Making every street cleaner, safer, and brighter.</p><br>
+            <a href="report.php" class="btn">Report Now</a>
         </div>
     </section>
 <br><br>
 
-    <section id="jewellery">
-        <h2>Jewellery to Love</h2>
-        <p class="review-text">From timeless classics to modern designs, discover the pieces that celebrate your unique style.</p><br><br>
-        <div class="jewellery-container">
-            <div class="jewellery-box">
-                <img src="img/home1.jpg" alt="Book 1">
-                <h3>Earrings</h3>
-                <h4>$70<br><br></h4>
-                <a href="cart.php" class="icon-btn">
-            <i class="fa-regular fa-heart"></i>
-            </a>
-                <a class="read-more" href="#">Buy</a>
-            </div>
-            <div class="jewellery-box">
-                <img src="img/homee.jpg" alt="Book 2">
-                <h3>Bracelet</h3>
-                <h4>$85</h4><br>
-                <a href="cart.php" class="icon-btn">
-            <i class="fa-regular fa-heart"></i>
-            </a>
-                <a class="read-more" href="#">Buy</a>
-            </div>
-            <div class="jewellery-box">
-                <img src="img/homeee.jpg" alt="Book 3">
-                <h3>Stud Earrings</h3>
-                <h4>$90<br><br></h4>
-                <a href="cart.php" class="icon-btn">
-            <i class="fa-regular fa-heart"></i>
-            </a>
-                <a class="read-more" href="#">Buy</a>
-            </div>
-        </div>
-    </section>
+<div class="tab <?php echo $tab === 'home' ? 'active' : ''; ?>">
+<h1 class="title">CityCare Report Overview</h1>
+
+<?php
+// Include database connection
+include 'connection.php';
+
+// Fetch real statistics
+$total_reports     = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM maintenance"))['count'];
+$pending_reports   = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM maintenance WHERE status = 'Pending'"))['count'];
+$resolved_reports  = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM maintenance WHERE status = 'Resolved' OR status = 'Finished'"))['count'];
+
+// Calculate average response time (in hours) for resolved reports
+$avg_query = mysqli_query($conn, "
+    SELECT AVG(TIMESTAMPDIFF(HOUR, created_at, updated_at)) as avg_hours 
+    FROM maintenance 
+    WHERE (status = 'Resolved' OR status = 'Finished') 
+      AND updated_at IS NOT NULL
+");
+$avg_result = mysqli_fetch_assoc($avg_query);
+$avg_response = $avg_result['avg_hours'] !== null ? round($avg_result['avg_hours'], 1) . ' hrs' : '-';
+?>
+
+<div class="stats-grid">
+    <a href="reports.php?type=all" class="stat-card">
+        <h1><?= number_format($total_reports) ?></h1>
+        <p>Total Reports</p>
+    </a>
+    <a href="reports.php?type=pending" class="stat-card">
+        <h1><?= number_format($pending_reports) ?></h1>
+        <p>Pending</p>
+    </a>
+    <a href="reports.php?type=resolved" class="stat-card">
+        <h1><?= number_format($resolved_reports) ?></h1>
+        <p>Resolved</p>
+    </a>
+    <a href="reports.php?type=avg" class="stat-card">
+        <h1><?= $avg_response ?></h1>
+        <p>Avg Response Time</p>
+    </a>
+</div>
 
 
-    <section id="jewellery">
-        <div class="jewellery-container">
-            <div class="jewellery-box">
-                <img src="img/image.avif" alt="Book 1">
-                <h3>Diamond Ring</h3>
-                <h4>$120<br><br></h4>
-                <a href="cart.php" class="icon-btn">
-            <i class="fa-regular fa-heart"></i>
-            </a>
-                <a class="read-more" href="#">Buy</a>
-            </div>
-            <div class="jewellery-box">
-                <img src="img/home3.avif" alt="Book 2">
-                <h3>Bracelet</h3>
-                <h4>$95</h4><br>
-                <a href="cart.php" class="icon-btn">
-            <i class="fa-regular fa-heart"></i>
-            </a>
-                <a class="read-more" href="#">Buy</a>
-            </div>
-            <div class="jewellery-box">
-                <img src="img/homeJ.jpg" alt="Book 3">
-                <h3>Necklace</h3>
-                <h4>$180<br><br></h4>
-                <a href="cart.php" class="icon-btn">
-            <i class="fa-regular fa-heart"></i>
-            </a>
-                <a class="read-more" href="#">Buy</a>
-            </div>
-        </div>
-    </section>
-<section id="categories">
-        <h2>Popular Collections</h2>
-        <div class="category-cards">
-            <div class="category-card">
-                <img src="img/rings.jpg" alt="#">
-                <h3>Rings</h3>
-            </div>
-            <div class="category-card">
-                <img src="img/nacles.jpg" alt="#">
-                <h3>Necklaces</h3>
-            </div>
-            <div class="category-card">
-                <img src="img/braslets.jpg" alt="#">
-                <h3>Bracelets</h3>
-            </div>
-            <div class="category-card">
-                <img src="img/earings.jpg" alt="#">
-                <h3>Earrings</h3>
-            </div>
-        </div>
-    </section>
+
+
 
     <section id="testimonials">
-        <h2>What Our Customers Say</h2><br><br>
+        <h2>Voices from Our City:</h2><br><br>
         <div class="testimonials-container"><br><br>
-            <div class="testimonial">
-                <p class="review-text">"Seraphina jewellery makes every moment feel special. Absolutely stunning!"</p><br>
+            <div class="testimonial"><br>
+                <p class="review-text">“Urban Servis keeps our streets clean and safe. It really makes a difference in our daily life!”</p><br><br>
                 <h4>- Elena R.</h4>
             </div>
-            <div class="testimonial">
-                <p class="review-text">"Elegant, unique, and divine. I always get compliments! I love there products"</p><br>
+            <div class="testimonial"><br>
+                <p class="review-text">“I love how City Care listens to residents’ feedback and improves our neighborhoods every day.”</p><br><br>
                 <h4>– Daniel M.</h4>
             </div>
-            <div class="testimonial">
-                <p class="review-text">"Absolutely stunning! Every piece feels like it was made just for me."</p><br><br>
+            <div class="testimonial"><br>
+                <p class="review-text">“Thanks to Urban Servis, our parks and public spaces are well-maintained and welcoming.”</p><br><br>
                 <h4>– Sofia R.</h4>
             </div>
         </div>
@@ -588,13 +658,13 @@ html {
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="report.php">Report</a></li>
+                    <li><a href="contantus.php">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-section links">
-                <h3>About Seraphina</h3>
-                <p>Seraphina, inspired by celestial seraphim, embodies purity, light, and timeless elegance.</p>
+                <h3>About Urban Service</h3>
+                <p>Urban Service,embodies innovation, connection, and vibrant community energy.</p>
             </div>
             <div class="footer-section social">
                 <h3>Follow Us</h3>
@@ -610,7 +680,7 @@ html {
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Seraphina Jewellery | All rights reserved</p>
+            <p>&copy; 2025 Urban Serve | All rights reserved</p>
         </div>
     </footer>
 

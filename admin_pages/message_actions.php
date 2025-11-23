@@ -2,13 +2,13 @@
 include '../connection.php';
 session_start();
 
-// ✅ Check admin session
+
 if (!isset($_SESSION['admin_name'])) {
     header('location:../login.php');
     exit();
 }
 
-// ✅ Handle delete
+
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
     $id = intval($_GET['id']);
 

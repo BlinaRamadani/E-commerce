@@ -8,12 +8,10 @@ $users = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Users</title>
-
-    <!-- Bootstrap + FontAwesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    
     <style>
         body {
             background-color: #f8f9fa;
@@ -135,14 +133,13 @@ $users = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
 
 <h3 class="mb-4">Manage Users</h3>
 
-<!-- Add User Button -->
 <div class="mb-3 text-end">
     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">
         <i class="fas fa-user-plus me-1"></i> Add User
     </button>
 </div>
 
-<!-- Users Table -->
+
 <div class="table-responsive">
     <table class="table table-striped table-hover align-middle">
         <thead class="table-dark">
@@ -177,7 +174,7 @@ $users = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
     </table>
 </div>
 
-<!-- ADD USER MODAL -->
+
 <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -213,7 +210,7 @@ $users = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
   </div>
 </div>
 
-<!-- EDIT USER MODAL -->
+
 <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -247,7 +244,7 @@ $users = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
 </div>
 
 <script>
-// Handle Add User
+/
 document.getElementById('addUserForm').addEventListener('submit', async e => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -258,7 +255,7 @@ document.getElementById('addUserForm').addEventListener('submit', async e => {
     location.reload();
 });
 
-// Handle Edit Modal Pre-fill
+
 document.querySelectorAll('.editUserBtn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.getElementById('editUserId').value = btn.dataset.id;
@@ -268,7 +265,7 @@ document.querySelectorAll('.editUserBtn').forEach(btn => {
     });
 });
 
-// Handle Edit User
+
 document.getElementById('editUserForm').addEventListener('submit', async e => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -279,7 +276,7 @@ document.getElementById('editUserForm').addEventListener('submit', async e => {
     location.reload();
 });
 
-// Handle Delete
+
 document.querySelectorAll('.deleteUserBtn').forEach(btn => {
     btn.addEventListener('click', async () => {
         if (confirm('Are you sure you want to delete this user?')) {

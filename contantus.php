@@ -2,7 +2,7 @@
 include 'connection.php';
 session_start();
 
-// ✅ Require user to be logged in
+
 if (!isset($_SESSION['user_id'])) {
     header('location:login.php');
     exit();
@@ -36,7 +36,7 @@ if (isset($_POST['send_message'])) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-<title>Contact Us - Seraphina</title>
+<title>Contact Us</title>
 <style>
   * {
   margin: 0;
@@ -91,49 +91,66 @@ nav {
   color: #A1C2BD;
 }
 
-:root{
-  --accent:#A1C2BD;
-  --dark:#19183B;
-  --light:#fff;
-}
+ :root {
+    --primary-bg: #3C467B;   /* deep indigo */
+    --secondary-bg: #50589C; /* card background */
+    --accent: #636CCB;       /* borders/accents */
+    --highlight: #6E8CFB;    /* CTA/highlight */
+    --text: #F5F7FF;         /* main text */
+    --muted: #CBD2FF;        /* muted text */
+  }
 
-.logo-elegant{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  user-select:none;
-}
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 
-/* circular initial */
-.logo-elegant .mark{
-  width:58px;
-  height:58px;
-  display:inline-grid;
-  place-items:center;
-  background:linear-gradient(135deg,var(--accent),#ffffff);
-  color:var(--dark);
-  font-family:'Montserrat',sans-serif;
-  font-weight:700;
-  font-size:28px;
-  border-radius:50%;
-  box-shadow:0 6px 18px rgba(25,24,59,0.12);
-}
+  /* City skyline icon using CSS shapes */
+  .city {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+  }
 
-/* word */
-.logo-elegant .word{
-  font-family:'Dancing Script',cursive;
-  color:var(--dark);
-  font-size:36px;
-  line-height:1;
-  letter-spacing:0.5px;
-  text-shadow:0 1px 0 rgba(255,255,255,0.2);
-}
+  .building {
+    width: 10px;
+    height: 30px;
+    background-color: var(--highlight);
+    border-radius: 2px 2px 0 0;
+    position: relative;
+  }
 
-/* responsive */
-@media (max-width:480px){
-  .logo-elegant .mark{ width:46px; height:46px; font-size:22px;}
-  .logo-elegant .word{ font-size:26px;}
-}
+  .building:nth-child(2) {
+    height: 45px;
+  }
+
+  .building:nth-child(3) {
+    height: 35px;
+  }
+
+  .building::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 2px;
+    background-color: var(--text);
+    border-radius: 50%;
+  }
+
+  /* Text */
+  .logo-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text);
+  }
+
+  .logo-text span {
+    color: var(--highlight);
+  }
 
 .search-bar {
   display: flex;
@@ -189,7 +206,7 @@ nav {
 
 #hero-jewellery {
   position: relative;
-  background-image: url('img/ab.jpg');
+  background-image: url('img/index.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -256,7 +273,7 @@ body {
   color: var(--text-color);
 }
 
-/* === Contact Form Container === */
+
 .contact-container {
   max-width: 520px;
   margin: 80px auto;
@@ -273,7 +290,7 @@ body {
   box-shadow: 0 8px 25px rgba(25, 24, 59, 0.25);
 }
 
-/* === Heading === */
+
 .contact-container h2 {
   font-size: 2rem;
   color: var(--dark-blue);
@@ -283,7 +300,7 @@ body {
   font-weight: 700;
 }
 
-/* === Input Fields === */
+
 .contact-container input,
 .contact-container textarea {
   width: 100%;
@@ -305,7 +322,7 @@ body {
   background-color: var(--white);
 }
 
-/* === Submit Button === */
+
 .contact-container button {
   width: 100%;
   padding: 14px 0;
@@ -328,7 +345,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* === Placeholder Text === */
+
 ::placeholder {
   color: var(--muted-teal);
   font-style: italic;
@@ -492,37 +509,31 @@ html {
 </style>
 </head>
 <body>
- <header>
-
-        <div class="logo-elegant" aria-label="Seraphina logo">
-  <span class="mark">S</span>
-  <span class="word">Seraphina</span>
+    <header>
+<div class="logo">
+  <div class="city">
+    <div class="building"></div>
+    <div class="building"></div>
+    <div class="building"></div>
+  </div>
+  <div class="logo-text">Urban <span>Service</span></div>
 </div>
+
         <nav>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="aboutus.php">About Us</a></li>
-                <li><a href="index.php#jewellery">Buy</a></li>
+                <li><a href="report.php">Report</a></li>
                 <li><a href="contantus.php">Contact Us</a></li>
             </ul>
-            <div class="search-bar">
-                <input type="text" placeholder="Search jewellery...">
-                <button>Search</button><br>
-                <a href="cart.php" class="icon-btn">
-            <i class="fa-regular fa-heart"></i>
-            </a>
-            <a href="cart.php" class="icon-btn">
-            <i class="fa-solid fa-cart-shopping"></i>
-      </a>
-            </div>
         </nav>
     </header>
 
     <section id="hero-jewellery">
         <div class="content">
-            <h2>We’d Love to Hear From You</h2>
-            <p>At Seraphina, every message shines as bright as our jewels — reach out and let us make your experience truly radiant.</p><br>
-            <a href="aboutus.php" class="btn">About us</a>
+            <h2>Reach Out, Make a Change</h2>
+            <p>Your voice matters,connect with us to keep your city safe and vibrant.</p><br>
+            <a href="index.php" class="btn">Go to Home</a>
         </div>
     </section>
 <br><br>
@@ -539,22 +550,20 @@ html {
   </form>
 </div>
 
-
-
-<footer>
+   <footer>
         <div class="footer-content">
             <div class="footer-section about">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="aboutus.php">About Us</a></li>
-                    <li><a href="#">Books</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="report.php">Report</a></li>
+                    <li><a href="contantus.php">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-section links">
-                <h3>About Seraphina</h3>
-                <p>Seraphina, inspired by celestial seraphim, embodies purity, light, and timeless elegance.</p>
+                <h3>About Urban Service</h3>
+                <p>Urban Service,embodies innovation, connection, and vibrant community energy.</p>
             </div>
             <div class="footer-section social">
                 <h3>Follow Us</h3>
@@ -570,9 +579,17 @@ html {
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Seraphina Jewellery | All rights reserved</p>
+            <p>&copy; 2025 Urban Serve | All rights reserved</p>
         </div>
     </footer>
 
 </body>
 </html>
+
+<!-- 
+  --dark-blue: #19183B;
+  --muted-teal: #708993;
+  --soft-green: #A1C2BD;
+  --light-bg: #E7F2EF;
+  --text-color: #19183B;
+  --white: #ffffff; -->

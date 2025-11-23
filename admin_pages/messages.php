@@ -2,13 +2,13 @@
 include '../connection.php';
 session_start();
 
-// ✅ Check admin session
+
 if (!isset($_SESSION['admin_name'])) {
     header('location:../login.php');
     exit();
 }
 
-// ✅ Fetch all messages
+
 $messages = mysqli_query($conn, "SELECT * FROM message ORDER BY id DESC");
 ?>
 
@@ -39,7 +39,7 @@ $messages = mysqli_query($conn, "SELECT * FROM message ORDER BY id DESC");
             <td><?= htmlspecialchars($msg['message']) ?></td>
             <td><?= isset($msg['created_at']) ? $msg['created_at'] : '-' ?></td>
             <td>
-                <!-- 🟢 Delete button sends ID to message_actions.php -->
+                
                <a href="admin_pages/message_actions.php?action=delete&id=<?= $msg['id'] ?>" 
    class="btn btn-sm btn-danger"
    onclick="return confirm('Delete this message?')">
@@ -56,15 +56,15 @@ $messages = mysqli_query($conn, "SELECT * FROM message ORDER BY id DESC");
 <style>
 
 
-    /* === FINAL STYLE FIX FOR USER MESSAGES TABLE === */
+    
 
-/* Page background and spacing */
+
 body {
     background-color: #eef0f3;
     font-family: 'Poppins', sans-serif;
 }
 
-/* Title */
+
 h3.mb-4 {
     font-size: 30px;
     font-weight: 600;
@@ -72,13 +72,13 @@ h3.mb-4 {
     margin: 30px 0 25px 10px;
 }
 
-/* Table wrapper */
+
 .table-responsive {
     background: transparent;
     padding: 10px 20px;
 }
 
-/* Table design */
+
 table {
     width: 100%;
     border-collapse: separate;
@@ -89,7 +89,7 @@ table {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Header style */
+
 thead.table-dark {
     background-color: #1f1f1f !important;
     color: #fff;
@@ -103,7 +103,7 @@ thead th {
     border: none;
 }
 
-/* Rows */
+
 tbody td {
     padding: 14px 14px;
     font-size: 15px;
@@ -116,7 +116,7 @@ tbody tr:hover {
     transition: 0.3s ease;
 }
 
-/* Buttons */
+
 .btn-danger {
     background-color: #dc3545 !important;
     border: none;
@@ -131,7 +131,7 @@ tbody tr:hover {
     background-color: #b02a37 !important;
 }
 
-/* Rounded top for header */
+
 thead th:first-child {
     border-top-left-radius: 12px;
 }
@@ -140,12 +140,12 @@ thead th:last-child {
     border-top-right-radius: 12px;
 }
 
-/* Consistent spacing for dashboard view */
+
 main, .main-content, .content {
     padding: 40px;
 }
 
-/* Responsive fix */
+
 @media (max-width: 768px) {
     table {
         font-size: 13px;
